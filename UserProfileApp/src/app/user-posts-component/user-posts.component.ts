@@ -21,7 +21,8 @@ export class UserPostsComponent implements OnInit {
     constructor(
         private service: UserPostsService,
         private getRouter: Router,
-        private getRoute: ActivatedRoute) { }
+        private getRoute: ActivatedRoute
+    ) { }
 
     ngOnInit() {
         this.getRoute.paramMap.subscribe(params => {
@@ -37,7 +38,7 @@ export class UserPostsComponent implements OnInit {
         });
     }
 
-    getUserComments(postId: number) {
+    getUserCommentsByPostId(postId: number) {
         this.getRoute.paramMap.subscribe(params => {
             if (postId) {
                 this.service.getUserCommentsByPostId(postId).subscribe(

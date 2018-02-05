@@ -18,16 +18,16 @@
                 </td>
                 <td>
                     <h4>{{post.title}}</h4>{{post.body}}
-                    <div *ngFor= "let cmnt of comments">
-                        <ul *ngIf = "showComment && cmnt.postId == post.id">
+                    <div *ngFor= "let comment of comments">
+                        <ul *ngIf = "showComment && comment.postId == post.id">
                             <li>
-                                {{cmnt.body}}
+                                {{comment.body}}
                             </li>
                         </ul>
                     </div>
                 </td>
                 <td>
-                    <a class="view-comment-btn" (click)="getUserComments(post.id)">View Comments</a>
+                    <a class="view-comment-btn" (click)="getUserCommentsByPostId(post.id)">View Comments</a>
                 </td>
             </tr>
         </tbody>
