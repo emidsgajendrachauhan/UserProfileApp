@@ -1,0 +1,35 @@
+<div class="container">
+    <table class="table table-striped table-responsive">
+        <thead class="table-header">
+            <tr>
+                <th>
+                    <span class="glyphicon glyphicon-user"></span>
+                </th>
+                <th>Post from username</th>
+                <th class="col-sm-2">
+                    <a>+ New Post</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let post of posts">
+                <td>
+                    <a class="img-responsive glyphicon glyphicon-edit"></a>
+                </td>
+                <td>
+                    <h4>{{post.title}}</h4>{{post.body}}
+                    <div *ngFor= "let cmnt of comments">
+                        <ul *ngIf = "showComment && cmnt.postId == post.id">
+                            <li>
+                                {{cmnt.body}}
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+                <td>
+                    <a class="view-comment-btn" (click)="getUserComments(post.id)">View Comments</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

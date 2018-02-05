@@ -1,0 +1,10 @@
+.img-responsive{
+    width: 50px;
+}
+.table-header{
+    background-color: lightsteelblue;
+}
+.view-comment-btn{
+    text-decoration: underline;
+    font-weight: bold;
+}
