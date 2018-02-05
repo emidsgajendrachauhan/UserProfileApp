@@ -10,8 +10,6 @@ import { Posts } from '../models/posts';
 export class UserPostsService {
     private apiUrlForPost = 'https://jsonplaceholder.typicode.com/posts';
     private apiUrlForComments = 'https://jsonplaceholder.typicode.com/comments';
-    private users: Posts[] = [];
-
 
     constructor(public http: Http) { }
 

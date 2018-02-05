@@ -26,8 +26,8 @@
         <td>{{user.email}}</td>
         <td>{{user.company.name}}</td>
         <td>{{user.website}}</td>
-        <td><a [routerLink] = "['/posts',user.id]" class="btn btn-success">Posts</a></td>
-        <td><a routerLink = "/posts" class="btn btn-info">Albums</a></td>
+        <td><a [routerLink] = "['/posts',user.id]" class="btn btn-info">Posts</a></td>
+        <td><a [routerLink] = "['/albums',user.id]" class="btn btn-success">Albums</a></td>
       </tr>
     </tbody>
   </table>
