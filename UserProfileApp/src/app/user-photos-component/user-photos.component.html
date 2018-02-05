@@ -1,0 +1,33 @@
+<!-- <span *ngFor="let photo of photos">
+    <h6>{{photo.albumId}}</h6>
+    <h6>{{photo.id}}</h6>
+    <h6>{{photo.title}}</h6>
+    <h6>{{photo.url}}</h6>
+    <h6>{{photo.thumbnailUrl}}</h6>
+    <div class="responsive gallery">
+        <img src={{photo.url}} width="300" height="200">
+        <div class="desc">{{photo.title}}</div>
+    </div>
+</span> -->
+
+
+<div class="container">
+    <table class="table table-striped table-responsive">
+        <thead class="table-header">
+            <tr>
+                <th class="col-sm-1">
+                    <span class="glyphicon glyphicon-user"></span>
+                    Album Name
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <span *ngFor="let photo of photos">
+                <div class="responsive gallery">
+                    <img src={{photo.url}} width="300" height="200">
+                    <div class="desc">{{photo.title}}</div>
+                </div>
+            </span>
+        </tbody>
+    </table>
+</div>
