@@ -11,6 +11,7 @@ export class UserPhotosService {
 
     constructor(public http: Http) { }
 
+    /* Service: Get user photos by album id */
     getUserPhotosByAlbumId(albumId: number) {
         return this.http
             .get(`${this.apiUrlForPost}/?albumId=${albumId}`)

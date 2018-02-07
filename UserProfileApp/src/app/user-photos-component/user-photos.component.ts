@@ -35,4 +35,9 @@ export class UserPhotoComponent implements OnInit {
         });
     }
 
+    showFullPhoto(event, photoUrl: string) {
+        console.log(event);
+        (<HTMLImageElement>document.querySelector('.img-size-full')).src = photoUrl;
+    }
+
 }

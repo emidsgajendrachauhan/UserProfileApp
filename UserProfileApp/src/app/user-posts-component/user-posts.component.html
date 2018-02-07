@@ -5,31 +5,66 @@
                 <th>
                     <span class="glyphicon glyphicon-user"></span>
                 </th>
-                <th>Post from username</th>
+                <th>Post from {{userName}}</th>
                 <th class="col-sm-2">
-                    <a>+ New Post</a>
+                    <a data-toggle="modal" data-target="#addPostModal">+ New Post</a>
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let post of posts">
                 <td>
-                    <a class="img-responsive glyphicon glyphicon-edit"></a>
+                    <img src="./assets/img/edit.png" class="img-responsive" alt="Cinque Terre">
                 </td>
                 <td>
                     <h4>{{post.title}}</h4>{{post.body}}
-                    <div *ngFor= "let comment of comments">
-                        <ul *ngIf = "showComment && comment.postId == post.id">
-                            <li>
-                                {{comment.body}}
-                            </li>
-                        </ul>
+                    <div id="commentsSection">
+                        <div *ngFor="let comment of comments">
+                            <div [hidden]="comment.postId != post.id">
+                                <br/>
+                                <div class="boxed">
+                                    <b>{{comment.email.substring(0,comment.email.indexOf("@"))}}: </b>{{comment.body}}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </td>
                 <td>
-                    <a class="view-comment-btn" (click)="getUserCommentsByPostId(post.id)">View Comments</a>
+                    <a class="view-comment-btn" (click)="getUserCommentsByPostId(post.id);">View Comments</a>
                 </td>
             </tr>
         </tbody>
     </table>
+</div>
+
+<!--Modal pop up to add a new post-->
+<div class="container">
+    <!-- Modal -->
+    <div class="modal fade" id="addPostModal" role="dialog">
+        <div class="modal-dialog modal-md">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header btn-info">
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">New Post</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Title..." type="text" id="inputTitle" />
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Message..." type="textArea" id="inputMessage"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal" id="cancel-Post-btn">Cancel</button>
+                    <button type="button" class="btn btn-success" (click)="saveUserNewPost()">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -16,7 +16,7 @@ export class UserPostsComponent implements OnInit {
     posts: Posts[] = [];
     comments: Comments[] = [];
     userId: number;
-    showComment: boolean = false;
+    userName: string;
 
     constructor(
         private service: UserPostsService,
@@ -27,9 +27,11 @@ export class UserPostsComponent implements OnInit {
     ngOnInit() {
         this.getRoute.paramMap.subscribe(params => {
             const getId = params.get('id');
+            const getUserName = params.get('name');
             if (getId) {
                 // tslint:disable-next-line:radix
                 this.userId = parseInt(getId);
+                this.userName = getUserName;
                 this.service.getUserPostsByUserId(this.userId).subscribe(
                     (posts: Posts[]) => {
                         this.posts = posts;
@@ -38,6 +40,7 @@ export class UserPostsComponent implements OnInit {
         });
     }
 
+    /* Method: Get user comments by post id */
     getUserCommentsByPostId(postId: number) {
         this.getRoute.paramMap.subscribe(params => {
             if (postId) {
@@ -45,7 +48,30 @@ export class UserPostsComponent implements OnInit {
                     (comments: Comments[]) => {
                         this.comments = comments;
                     });
-                    this.showComment = true;
+            }
+        });
+    }
+
+    /* Method: Save new post of user */
+    saveUserNewPost() {
+        this.getRoute.paramMap.subscribe(params => {
+            const getPostId = params.get('id');
+            const postTitle = (<HTMLInputElement>document.querySelector('#inputTitle')).value;
+            const postBody = (<HTMLInputElement>document.querySelector('#inputMessage')).value;
+            const hangoutButton = document.getElementById('cancel-Post-btn');
+            if (getPostId && postTitle && postBody) {
+                // tslint:disable-next-line:radix
+                this.userId = parseInt(getPostId);
+                this.service.addNewPostForUser(this.userId, postTitle, postBody).subscribe(
+                    (posts: Posts) => {
+                        this.posts.push(posts);
+                        // Cleaning HTML and closing popup
+                        (<HTMLInputElement>document.querySelector('#inputTitle')).value = '';
+                        (<HTMLInputElement>document.querySelector('#inputMessage')).value = '';
+                        hangoutButton.click();
+                    });
+            } else {
+                alert('Title or Message body can not be empty...');
             }
         });
     }

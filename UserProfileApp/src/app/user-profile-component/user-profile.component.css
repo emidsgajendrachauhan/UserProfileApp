@@ -1,5 +1,9 @@
 .img-responsive{
     width: 50px;
+    border-width: 2px;
+    border-color: #2d2e2fc4;
+    border-style: solid;
+    border-radius: 50%;
 }
 .table-header{
     background-color: lightsteelblue;

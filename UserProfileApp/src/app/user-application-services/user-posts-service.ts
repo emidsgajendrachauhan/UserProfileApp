@@ -13,15 +13,24 @@ export class UserPostsService {
 
     constructor(public http: Http) { }
 
+    /* Service: Get user post by user id */
     getUserPostsByUserId(id: number) {
         return this.http
             .get(`${this.apiUrlForPost}/?userId=${id}`)
             .map((response: Response) => response.json());
     }
 
+    /* Service: Get user comments by post id */
     getUserCommentsByPostId(commentId: number) {
         return this.http
             .get(`${this.apiUrlForComments}/?postId=${commentId}`)
+            .map((response: Response) => response.json());
+    }
+
+    /* Service: Add new post for specific user */
+    addNewPostForUser(postUserId: number, postTitle: string, postBody: string) {
+        return this.http
+            .post(`${this.apiUrlForPost}`, { userId: postUserId, title: postTitle, body: postBody })
             .map((response: Response) => response.json());
     }
 

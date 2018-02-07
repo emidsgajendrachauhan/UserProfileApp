@@ -8,7 +8,7 @@ import { UserPhotoComponent } from './user-photos-component/user-photos.componen
 export const ROUTES: Routes = [
   { path: '', component: UserProfileComponent },
   { path: 'user', component: UserProfileComponent },
-  { path: 'posts/:id', component: UserPostsComponent },
+  { path: 'posts/:id/:name', component: UserPostsComponent },
   { path: 'albums/:id', component: UserAlbumsComponent },
   { path: 'photos/:id', component: UserPhotoComponent },
 ];

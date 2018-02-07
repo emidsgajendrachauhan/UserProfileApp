@@ -1,3 +1,18 @@
 .table-header{
     background-color: lightsteelblue;
 }
+.img-size{
+    width: 300px;
+    height: 200px;
+}
+.img-size-full{
+    width: 100%;
+}
+.thumbnail{
+    height: 280px;
+}
+.thumbnail .caption {
+    padding: 9px;
+    color: #2b29296b;
+    font-weight: bold;
+}

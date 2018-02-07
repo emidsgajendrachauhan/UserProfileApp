@@ -11,6 +11,7 @@ export class UserProfileService {
 
     constructor(public http: Http) {}
 
+    /* Service: Get user profiles on dashboard */
     getUserProfiles() {
         return this.http
         .get(this.apiUrl)
